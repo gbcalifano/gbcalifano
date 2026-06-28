@@ -1,0 +1,789 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> The latent bias in latent class analysis | Califano, G. </title> <meta name="author" content="Giovanbattista Califano"> <meta name="description" content="After you fit a latent class model, linking the classes to outcomes is trickier than it looks. The standard approach biases your estimates toward zero. "> <meta name="keywords" content="behavioural economics, consumer psychology, food science, gastronomy, artificial intelligence, choice experiment, willingness to pay, latent class analysis, Giovanbattista Califano"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.css" integrity="sha256-zTN0r+0OKaIv2xqeNNIYxNk0pWJ6+IqPGc1iDgVzWF0=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%8D%8E&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://califano.xyz/blog/2026/latent-bias-lca/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Califano, G. </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">CV </a> </li> <li class="nav-item "> <a class="nav-link" href="/teaching/">teaching </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">people </a> </li> <li class="nav-item dropdown "> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-nav-dropdown-toggle="true" aria-haspopup="true" aria-expanded="false">submenus </a> <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> <a class="dropdown-item " href="/books/">bookshelf</a> <div class="dropdown-divider"></div> <a class="dropdown-item " href="/blog/">blog</a> </div> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top toc toc-sidebar" aria-label="Table of contents" data-toc-collapse="expanded" data-toc-collapse-depth=""></nav> </div> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">The latent bias in latent class analysis</h1> <p class="post-meta"> Created on May 31, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/tag/methods"> <i class="fa-solid fa-hashtag fa-sm"></i> methods</a>   <a href="/blog/tag/stata"> <i class="fa-solid fa-hashtag fa-sm"></i> stata</a>   <a href="/blog/tag/latent-class"> <i class="fa-solid fa-hashtag fa-sm"></i> latent-class</a>   ·   <a href="/blog/category/notes"> <i class="fa-solid fa-tag fa-sm"></i> notes</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <style>
+/* ── scoped styles for this post ───────────────────────────────── */
+.t-muted { opacity: 0.65; }
+.cell-hi { fill: rgba(99, 179, 237, 0.2); }
+
+.callout {
+  background: var(--global-code-bg-color, #f4f6f8);
+  border-left: 3px solid var(--global-theme-color, #4a90d9);
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.callout p { margin: 0.4rem 0 0; }
+
+.fig-cap {
+  font-size: 0.875rem;
+  color: var(--global-text-color-light, #6c757d);
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+.methods-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.93rem;
+}
+.methods-table th, .methods-table td {
+  border: 1px solid var(--global-divider-color, #dee2e6);
+  padding: 0.5rem 0.75rem;
+}
+.methods-table th {
+  background: var(--global-code-bg-color, #f8f9fa);
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+.badge-accepted { background: #2d8a4e; color: #fff; }
+.badge-rejected { background: #c0392b; color: #fff; }
+
+/* Stata input — default code-block styling, driven by highlight.js later */
+.hljs-stata-code {
+  font-family: var(--font-mono, "SFMono-Regular", Consolas, monospace);
+  font-size: 0.85rem;
+}
+
+/* Stata output — dark terminal look */
+.stata-log > .highlight > pre {
+  background: #1e2127 !important;
+  color: #abb2bf;
+  font-size: 0.82rem;
+  border: none;
+}
+.stata-log > .highlight > pre > code { color: #abb2bf; }
+
+.faq h3 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; }
+</style> <p>Latent class analysis is a method for discovering hidden subgroups of observations in your data. <em>Latent</em> means not directly observed: the classes are inferred from patterns in measured variables (such as survey responses, test items, behavioural indicators) rather than assigned by the researcher. Feed it enough items and it tells you that your sample breaks into — say — three distinct profiles, each with a characteristic response pattern.</p> <p>Once you have those classes, the natural next question is: <em>do they differ on some outcome I care about?</em> Or: <em>what predicts membership in each group?</em> The standard approach to answering these questions introduces a systematic bias that shrinks your estimates.</p> <p>Here is what goes wrong, why it matters, and how to fix it in Stata.</p> <h2 id="the-three-step-workflow">The three-step workflow</h2> <p>In Step 1, you estimate the latent class model using only the observed indicators (no external variables yet). The model returns <em>posterior probabilities</em> for every observation: one probability per class, summing to 1. If your model has two classes, person <em>i</em> might come out 85% likely to belong to Class 1 and 15% likely to belong to Class 2.</p> <p>In Step 2, you assign each person to their <em>modal</em> class — the one with the highest posterior. Person <em>i</em> at 85%/15% gets hard-assigned to Class 1. An alternative is <em>proportional</em> assignment, where each person contributes fractionally to every class weighted by their posteriors.<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p> <p>In Step 3, you run a regression, ANOVA, or multinomial logit using these class labels as a variable.</p> <p>The problem is between Steps 2 and 3, wherein we treat the <em>latent</em> class variable as if it were <em>observed</em>.</p> <div class="fig"> <svg width="100%" viewbox="0 0 720 170" role="img" aria-label="Diagram of the three-step procedure"> <defs> <marker id="arr" viewbox="0 0 10 10" refx="8" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse"> <path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </marker> </defs> <rect x="10" y="42" width="190" height="82" fill="none" stroke="currentColor" stroke-width="1.5"></rect> <rect x="246" y="42" width="190" height="82" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <rect x="482" y="42" width="228" height="82" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="105" y="70" text-anchor="middle" font-size="22" font-weight="700">Step 1</text> <text x="105" y="92" text-anchor="middle" font-size="14" class="t-muted">Fit the mixture model</text> <text x="105" y="110" text-anchor="middle" font-size="14" class="t-muted">without external variables</text> <text x="105" y="28" text-anchor="middle" font-size="13" class="t-muted">Estimate class structure</text> <text x="341" y="70" text-anchor="middle" font-size="22" font-weight="700">Step 2</text> <text x="341" y="92" text-anchor="middle" font-size="14" class="t-muted">Assign each observation</text> <text x="341" y="110" text-anchor="middle" font-size="14" class="t-muted">to a class</text> <text x="341" y="28" text-anchor="middle" font-size="13" class="t-muted">Modal or proportional</text> <text x="596" y="70" text-anchor="middle" font-size="22" font-weight="700">Step 3</text> <text x="596" y="92" text-anchor="middle" font-size="14" class="t-muted">Relate classes to</text> <text x="596" y="110" text-anchor="middle" font-size="14" class="t-muted">covariates or outcomes</text> <text x="596" y="28" text-anchor="middle" font-size="13" class="t-muted">Regression / ANOVA</text> <rect x="191" y="59" width="64" height="48" fill="var(--global-bg-color, white)"></rect> <line x1="200" y1="83" x2="244" y2="83" stroke="currentColor" stroke-width="1" fill="none" marker-end="url(#arr)"></line> <text x="222" y="73" text-anchor="middle" font-size="12" class="t-muted">posterior</text> <text x="222" y="98" text-anchor="middle" font-size="12" class="t-muted">probs</text> <rect x="427" y="59" width="64" height="48" fill="var(--global-bg-color, white)"></rect> <line x1="436" y1="83" x2="480" y2="83" stroke="currentColor" stroke-width="1" fill="none" marker-end="url(#arr)"></line> <text x="458" y="73" text-anchor="middle" font-size="12" class="t-muted">class</text> <text x="458" y="98" text-anchor="middle" font-size="12" class="t-muted">labels</text> <text x="458" y="144" text-anchor="middle" font-size="13">↑</text> <text x="458" y="160" text-anchor="middle" font-size="13" class="t-muted">classification error enters here</text> </svg> </div> <hr> <h2 id="the-bias-class-differences-get-diluted">The bias: class differences get diluted</h2> <p>When you assign someone to a class, you treat an uncertain membership as though it were known with certainty. People who truly belong to Class 1 get counted in Class 2, and vice versa. The groups look more similar than they actually are, hence the estimated difference between them shrinks.</p> <div class="callout"> <strong>How large is the bias?</strong> <p>Simulation studies show naive three-step estimates are typically 20–45% smaller than the truth: largest when classes overlap, smallest when they are more cleanly separated.[^2]</p> </div> <p>The mechanism is easy to see. Suppose two equal-sized classes have true outcome means of 1 and 0, and 20% of observations land in the wrong class. The “Class 1” bucket now contains 80 genuine members (mean 1) and 20 interlopers from Class 2 (mean 0), giving a bucket average of <strong>0.80</strong>. By symmetry the “Class 2” bucket averages <strong>0.20</strong>, and the naive estimate of the group difference is 0.60 rather than the true 1.00.</p> <p>More generally, with a misclassification rate of $\varepsilon$ (say, 20%), the naive estimator recovers only $(1 - 2\varepsilon)$ of the true effect. At 10% error you keep 80% of the signal; at 30% error you keep only 40%. Models with moderate class overlap routinely sit between $\varepsilon = 0.15$ and $\varepsilon = 0.30$, which is well within the range where the bias is practically meaningful.</p> <p><strong>A glass of intuition.</strong> Suppose we want to measure how much more alcohol there is in <em>red wine</em> than in <em>water</em>. If we could sort the glasses perfectly, the comparison is stark: a deep-red glass of wine beside a clear glass of water. But modal assignment never hands us the true glasses: it hands us two <em>buckets</em>, each contaminated by the misclassified members of the other. The wine bucket gets a splash of water; the water bucket gets a splash of wine. Both come out more or less <em>pink</em>. Of course the gap between two pinks is narrower than the gap between red and clear, and the more the classes overlap (the lower the entropy), the more alike those two pinks become, until the measured difference all but disappears.</p> <div class="fig"> <svg width="100%" viewbox="0 0 720 212" role="img" aria-label="Wine and water glasses: as class overlap grows, the two estimated buckets both turn pink and the measured alcohol gap shrinks"> <defs> <marker id="arrw" viewbox="0 0 10 10" refx="8" refy="5" markerwidth="7" markerheight="7" orient="auto-start-reverse"> <path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </marker> </defs> <text x="360" y="20" text-anchor="middle" font-size="16" font-weight="700">What modal assignment actually compares</text> <line x1="150" y1="38" x2="585" y2="38" stroke="var(--global-divider-color, #aaa)" stroke-width="1" marker-end="url(#arrw)"></line> <line x1="240" y1="50" x2="240" y2="190" stroke="var(--global-divider-color, #aaa)" stroke-width="1" stroke-dasharray="4 3"></line> <line x1="480" y1="50" x2="480" y2="190" stroke="var(--global-divider-color, #aaa)" stroke-width="1" stroke-dasharray="4 3"></line> <text x="120" y="62" text-anchor="middle" font-size="13" class="t-muted">Clean separation</text> <text x="360" y="62" text-anchor="middle" font-size="13" class="t-muted">Some overlap</text> <text x="600" y="62" text-anchor="middle" font-size="13" class="t-muted">Heavy overlap</text> <g transform="translate(78,78)"> <path d="M-18 0 Q-18 36 0 36 Q18 36 18 0 Z" fill="#7c1a33" stroke="currentColor" stroke-width="1.3"></path> <ellipse cx="0" cy="0" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"></ellipse> <line x1="0" y1="36" x2="0" y2="62" stroke="currentColor" stroke-width="1.3"></line> <line x1="-13" y1="64" x2="13" y2="64" stroke="currentColor" stroke-width="1.3"></line> </g> <g transform="translate(162,78)"> <path d="M-18 0 Q-18 36 0 36 Q18 36 18 0 Z" fill="#eef3f7" stroke="currentColor" stroke-width="1.3"></path> <ellipse cx="0" cy="0" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"></ellipse> <line x1="0" y1="36" x2="0" y2="62" stroke="currentColor" stroke-width="1.3"></line> <line x1="-13" y1="64" x2="13" y2="64" stroke="currentColor" stroke-width="1.3"></line> </g> <text x="120" y="184" text-anchor="middle" font-size="14" font-weight="700">Δ alcohol ≈ 12</text> <g transform="translate(318,78)"> <path d="M-18 0 Q-18 36 0 36 Q18 36 18 0 Z" fill="#b25c74" stroke="currentColor" stroke-width="1.3"></path> <ellipse cx="0" cy="0" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"></ellipse> <line x1="0" y1="36" x2="0" y2="62" stroke="currentColor" stroke-width="1.3"></line> <line x1="-13" y1="64" x2="13" y2="64" stroke="currentColor" stroke-width="1.3"></line> </g> <g transform="translate(402,78)"> <path d="M-18 0 Q-18 36 0 36 Q18 36 18 0 Z" fill="#e7bcca" stroke="currentColor" stroke-width="1.3"></path> <ellipse cx="0" cy="0" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"></ellipse> <line x1="0" y1="36" x2="0" y2="62" stroke="currentColor" stroke-width="1.3"></line> <line x1="-13" y1="64" x2="13" y2="64" stroke="currentColor" stroke-width="1.3"></line> </g> <text x="360" y="184" text-anchor="middle" font-size="14" font-weight="700">Δ alcohol ≈ 7</text> <g transform="translate(558,78)"> <path d="M-18 0 Q-18 36 0 36 Q18 36 18 0 Z" fill="#cf9fab" stroke="currentColor" stroke-width="1.3"></path> <ellipse cx="0" cy="0" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"></ellipse> <line x1="0" y1="36" x2="0" y2="62" stroke="currentColor" stroke-width="1.3"></line> <line x1="-13" y1="64" x2="13" y2="64" stroke="currentColor" stroke-width="1.3"></line> </g> <g transform="translate(642,78)"> <path d="M-18 0 Q-18 36 0 36 Q18 36 18 0 Z" fill="#d6a8b5" stroke="currentColor" stroke-width="1.3"></path> <ellipse cx="0" cy="0" rx="18" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"></ellipse> <line x1="0" y1="36" x2="0" y2="62" stroke="currentColor" stroke-width="1.3"></line> <line x1="-13" y1="64" x2="13" y2="64" stroke="currentColor" stroke-width="1.3"></line> </g> <text x="600" y="184" text-anchor="middle" font-size="14" font-weight="700">Δ alcohol ≈ 1</text> </svg> </div> <p class="fig-cap">With 20% misclassification each bucket trades a fifth of its contents with the other: the wine bucket keeps only 80% of its colour, the water bucket picks up 20%, and a true gap of 12 is measured as roughly 7. Push the classes closer together (right) and the two buckets converge on the same pink: the estimated difference collapses toward zero even though nothing about the real wine and water has changed.</p> <hr> <h2 id="the-classification-error-matrix">The classification error matrix</h2> <p>Think of D as a receipt that summarises how much Step 2 distorted things. The entry in row <em>s</em>, column <em>t</em> is the probability of being assigned to class <em>t</em> when your true class is <em>s</em>. Diagonal entries capture correct classification; off-diagonal entries capture misclassification.</p> <p>Formally, D is an $S \times S$ matrix — for two classes, a 2 × 2 table. When classes are well separated, the diagonals approach 1 and the off-diagonals approach 0. When classes overlap, the off-diagonals grow, and so does the bias. The key point: you do not need to guess D. It can be computed directly from the posterior probabilities saved in Step 1, by averaging across observations within each true-class group.</p> <div class="fig"> <svg width="100%" viewbox="0 0 720 210" role="img" aria-label="Classification error matrix comparison"> <text x="200" y="22" text-anchor="middle" font-size="16" font-weight="700">Well-separated classes</text> <text x="72" y="88" text-anchor="end" font-size="13" class="t-muted">True 1</text> <text x="72" y="148" text-anchor="end" font-size="13" class="t-muted">True 2</text> <text x="122" y="188" text-anchor="middle" font-size="13" class="t-muted">Pred. 1</text> <text x="228" y="188" text-anchor="middle" font-size="13" class="t-muted">Pred. 2</text> <rect x="78" y="58" width="88" height="52" class="cell-hi"></rect> <rect x="78" y="58" width="88" height="52" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="122" y="89" text-anchor="middle" font-size="20" font-weight="700">0.94</text> <rect x="184" y="58" width="88" height="52" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="228" y="89" text-anchor="middle" font-size="20" class="t-muted">0.06</text> <rect x="78" y="118" width="88" height="52" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="122" y="149" text-anchor="middle" font-size="20" class="t-muted">0.05</text> <rect x="184" y="118" width="88" height="52" class="cell-hi"></rect> <rect x="184" y="118" width="88" height="52" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="228" y="149" text-anchor="middle" font-size="20" font-weight="700">0.95</text> <line x1="360" y1="16" x2="360" y2="185" stroke="var(--global-divider-color, #aaa)" stroke-width="1" stroke-dasharray="4 3" fill="none"></line> <text x="538" y="22" text-anchor="middle" font-size="16" font-weight="700">Overlapping classes</text> <text x="408" y="88" text-anchor="end" font-size="13" class="t-muted">True 1</text> <text x="408" y="148" text-anchor="end" font-size="13" class="t-muted">True 2</text> <text x="458" y="188" text-anchor="middle" font-size="13" class="t-muted">Pred. 1</text> <text x="618" y="188" text-anchor="middle" font-size="13" class="t-muted">Pred. 2</text> <rect x="414" y="58" width="88" height="52" class="cell-hi"></rect> <rect x="414" y="58" width="88" height="52" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="458" y="89" text-anchor="middle" font-size="20" font-weight="700">0.72</text> <rect x="574" y="58" width="88" height="52" fill="none" stroke="currentColor" stroke-width="1.5"></rect> <text x="618" y="89" text-anchor="middle" font-size="20" font-weight="700">0.28</text> <rect x="414" y="118" width="88" height="52" fill="none" stroke="currentColor" stroke-width="1.5"></rect> <text x="458" y="149" text-anchor="middle" font-size="20" font-weight="700">0.31</text> <rect x="574" y="118" width="88" height="52" class="cell-hi"></rect> <rect x="574" y="118" width="88" height="52" fill="none" stroke="var(--global-divider-color, #aaa)" stroke-width="1"></rect> <text x="618" y="149" text-anchor="middle" font-size="20" font-weight="700">0.69</text> </svg> </div> <hr> <h2 id="the-fix-two-bias-corrected-methods">The fix: two bias-corrected methods</h2> <p><strong>Bolck–Croon–Hagenaars (BCH; <a href="https://doi.org/10.1093/pan/mph001" rel="external nofollow noopener" target="_blank">Bolck et al., 2004</a>).</strong> BCH takes the <em>inverse</em> of D and uses it as a set of correction weights. The dataset is expanded into one row per class per observation, each row weighted by an entry of $D^{-1}$. A standard weighted regression on this expanded dataset recovers unbiased estimates without ever touching the mixture model again, meaning that class definitions from Step 1 stay frozen.</p> <p><strong>Maximum Likelihood (ML; <a href="https://doi.org/10.1093/pan/mpq025" rel="external nofollow noopener" target="_blank">Vermunt, 2010</a>).</strong> ML re-estimates the mixture model in Step 3, but holds the entries of D fixed as constraints. This lets the model account for classification error while estimating the relationship with the external variable, and it reports class-specific variances that BCH does not provide. The trade-off: it assumes normality within classes, which BCH does not require.<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></p> <div class="callout"> <strong>When to use which</strong> <p>Use BCH when normality within classes is uncertain, or when you want class definitions to stay fixed between steps. Use ML for categorical outcomes or when classes are well separated and distributional assumptions are plausible.</p> </div> <hr> <h2 id="using-step3-in-stata">Using <code class="language-plaintext highlighter-rouge">step3</code> in Stata</h2> <p>Computing and manipulating the D matrix is not exactly a piece of cake. Fortunately, the <code class="language-plaintext highlighter-rouge">step3</code> module implements both BCH and ML methods in Stata. Let’s see how it works with a simple example.</p> <p>Let’s install the command and dataset first:</p> <pre><code class="hljs-stata-code">. net install st0801</code></pre> <p>We can now <code class="language-plaintext highlighter-rouge">sysuse height</code>, which contains fictional data on 4,071 American high school seniors. Our variables are: person ID (<code class="language-plaintext highlighter-rouge">pid</code>), student height (cm), sex (1 = female, 2 = male).</p> <p>We also have a variable <code class="language-plaintext highlighter-rouge">y</code>, generated to follow a normal distribution with $\mu = 0$, $\sigma = 1$ for male students (48% of the sample), and $\mu = 0.5$, $\sigma = 1$ for female students (52% of the sample). Assume that the nature of <code class="language-plaintext highlighter-rouge">y</code> is unknown, and our goal is to test whether female students have higher values of <code class="language-plaintext highlighter-rouge">y</code> than male students. Further, suppose that our funny colleague dropped the sex variable from our dataset while you were in the toilet, making it our latent categorical variable in this example.<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup></p> <p>Fortunately for us, we still observe student height, which can serve as a useful proxy for sex. Heights may be represented as a mixture of two Gaussian components, corresponding to female and male students, with males expected to be, on average, about 5%–10% taller.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/posts/note_1/fig_1.svg" sizes="95vw"></source> <img src="/assets/img/posts/note_1/fig_1.svg" class="img-fluid" width="100%" height="auto" alt="Histogram with overlaid kernel density of student heights, showing a bimodal distribution" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Figure 1. Distribution of student heights. The bimodal shape hints at two underlying subpopulations.</figcaption> </figure> <pre><code class="hljs-stata-code">. sysuse height
+. twoway hist height || kdensity height</code></pre> <p>More formally, we aim to fit the following model:</p> \[f(\text{height}) = \pi_1 \mathcal{N}(\mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(\mu_2, \sigma_2^2)\] <p>where $f(\text{height})$ is the overall probability density of height, $\pi_1$ and $\pi_2$ are the mixing proportions ($\pi_1 + \pi_2 = 1$), and $\mathcal{N}(\mu_j, \sigma_j^2)$ are Gaussian distributions with mean $\mu_j$ and variance $\sigma_j^2$, representing the two subpopulations of female and male students. In Stata, we can fit this model with <code class="language-plaintext highlighter-rouge">fmm</code> or <code class="language-plaintext highlighter-rouge">gsem</code>, and predict the posterior class membership probabilities for each observation as follows:</p> <pre><code class="hljs-stata-code">. fmm 2: regress height
+. predict cpost*, classposteriorpr</code></pre> <div class="stata-log"> <figure class="highlight"><pre><code class="language-text" data-lang="text">Finite mixture model                                     Number of obs = 4,071
+Log likelihood = -15016.15
+
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+1.Class      |  (base outcome)
+-------------+----------------------------------------------------------------
+2.Class      |
+       _cons |  -.2149548   .2166024    -0.99   0.321    -.6394878    .2095781
+------------------------------------------------------------------------------
+
+Class:    1
+Response: height
+Model:    regress
+
+-------------------------------------------------------------------------------
+              | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+height        |
+        _cons |   163.0747   .6220492   262.16   0.000     161.8555    164.2939
+--------------+----------------------------------------------------------------
+ var(e.height)|   42.44258   3.455455                      36.18273    49.78542
+-------------------------------------------------------------------------------
+
+Class:    2
+Response: height
+Model:    regress
+
+-------------------------------------------------------------------------------
+              | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+height        |
+        _cons |   177.2601   .9649576   183.70   0.000     175.3688    179.1514
+--------------+----------------------------------------------------------------
+ var(e.height)|   51.78815   5.937079                      41.36635     64.8356
+-------------------------------------------------------------------------------</code></pre></figure> </div> <p>The first component has an estimated mean height of $\hat{\mu}_1 = 163.07$ cm (about 5′4″ for the metrically resistant) with variance $\hat{\sigma}_1^2 = 42.44$, while the second has $\hat{\mu}_2 = 177.26$ cm (about 5′10″) with variance $\hat{\sigma}_2^2 = 51.79$. Since the second component corresponds to taller students, we label it “Male” and the first “Female”. To plot the fitted model, we also need the mixing-proportion estimates $\hat{\pi}_1$ and $\hat{\pi}_2$. We will overlay the true sex-specific height distributions to assess how well the model has recovered them.</p> <pre><code class="hljs-stata-code">. estat lcprob, nose</code></pre> <div class="stata-log"> <figure class="highlight"><pre><code class="language-text" data-lang="text">Latent class marginal probabilities                      Number of obs = 4,071
+
+--------------------------------------------------------------
+             |     Margin
+-------------+------------------------------------------------
+       Class |
+          1  |   .5535327
+          2  |   .4464673
+--------------------------------------------------------------</code></pre></figure> </div> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/posts/note_1/fig_2.svg" sizes="95vw"></source> <img src="/assets/img/posts/note_1/fig_2.svg" class="img-fluid" width="100%" height="auto" alt="Fitted mixture components overlaid on the true sex-specific height distributions" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Figure 2. Estimated mixture components (dashed) overlaid on the true sex-specific distributions (solid). The model recovers the two subpopulations well, though with some leakage near the overlap region.</figcaption> </figure> <pre><code class="hljs-stata-code">. twoway (function .52*normalden(x,162.9026,6.526993), range(height)) ///
+         (function .48*normalden(x,176.3803,7.747659), range(height)) ///
+         (function .55*normalden(x,163.0747,sqrt(42.44258)), range(height)) ///
+         (function .45*normalden(x,177.2601,sqrt(51.78815)), range(height)), ///
+         legend(label(1 "Female") label(2 "Male") label(3 "Class 1") label(4 "Class 2")) ///
+         ytitle("Density") xtitle("Height (cm)")</code></pre> <p>As shown in the figure above, the two components align fairly well, though not perfectly, with the true distributions. Our model estimates 55% female and 45% male students in the population. We can infer that the imperfect classification arising from using height alone is due to relatively tall female students, and relatively short male students, for whom the classification probabilities are not very separated (again, low entropy).</p> <p>Nevertheless, a common approach at this stage is to assign each student to the class with the highest posterior membership probability and then compare means of <code class="language-plaintext highlighter-rouge">y</code> across classes using ANOVA, a t-test, or similar methods. If the mixture model had perfectly recovered the sex variable, the differences in <code class="language-plaintext highlighter-rouge">y</code> obtained via modal assignment would match those from the true sex variable. However, this is rarely the case. As a result, we expect the relationship between class membership and <code class="language-plaintext highlighter-rouge">y</code> to be somewhat <em>diluted</em> (recall the wine example above). To assess this, we estimate a regression model:</p> <pre><code class="hljs-stata-code">. generate Class = 1
+. replace Class = 2 if cpost2 &gt; cpost1
+. regress y i.Class</code></pre> <div class="stata-log"> <figure class="highlight"><pre><code class="language-text" data-lang="text">      Source |       SS           df       MS      Number of obs   =     4,071
+-------------+----------------------------------   F(1, 4069)      =    109.50
+       Model |  112.081626         1  112.081626   Prob &gt; F        =    0.0000
+    Residual |  4164.85525     4,069  1.02355745   R-squared       =    0.0262
+-------------+----------------------------------   Adj R-squared   =    0.0260
+       Total |  4276.93687     4,070  1.05084444   Root MSE        =    1.0117
+
+------------------------------------------------------------------------------
+           y | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     2.Class |   -.335732   .0320835   -10.46   0.000    -.3986332   -.2728308
+       _cons |   .3984043   .0208967    19.07   0.000     .3574354    .4393732
+------------------------------------------------------------------------------</code></pre></figure> </div> <p>The estimated difference between the two components — the coefficient of <code class="language-plaintext highlighter-rouge">2.Class</code> — is ≈ −0.336, about 33% smaller than the true difference of −0.5. Exactly the kind of dilution we expected. To correct for it, we use <code class="language-plaintext highlighter-rouge">step3</code> in BCH mode with the <code class="language-plaintext highlighter-rouge">outcome</code> option, which tells the command to treat <code class="language-plaintext highlighter-rouge">y</code> as a distal outcome of the latent class. We also supply the prefix of our posterior probabilities (<code class="language-plaintext highlighter-rouge">cpost</code>) and a variable name for the modal assignment (<code class="language-plaintext highlighter-rouge">W</code>).</p> <pre><code class="hljs-stata-code">. step3 y, pr(cpost) lclass(W) outcome bch</code></pre> <div class="stata-log"> <figure class="highlight"><pre><code class="language-text" data-lang="text">STEP3: Distal outcome analysis
+
+BCH Mean estimation                  Number of obs =     4,071
+--------------------------------------------------------------
+             | Coefficient  Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+y            |
+           W |
+          1  |   .4678218    .026197      .4164765     .519167
+          2  |  -.0066626    .028869     -.0632448    .0499196
+--------------------------------------------------------------
+Note: Linearized std. err.</code></pre></figure> </div> <p>By default, <code class="language-plaintext highlighter-rouge">step3</code> for continuous distal outcomes reports class-specific means of the outcome. Postestimation commands such as <code class="language-plaintext highlighter-rouge">pwcompare</code> are also supported:</p> <pre><code class="hljs-stata-code">. pwcompare W</code></pre> <div class="stata-log"> <figure class="highlight"><pre><code class="language-text" data-lang="text">Pairwise comparisons of marginal linear predictions
+
+Margins: asbalanced
+
+--------------------------------------------------------------
+             |                                 Unadjusted
+             |   Contrast   Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+y            |
+           W |
+     2 vs 1  |  -.4744844   .0450046     -.5626919   -.3862769
+--------------------------------------------------------------</code></pre></figure> </div> <p>The BCH method indeed provided less biased estimates. Next, we try the ML method by removing the option <code class="language-plaintext highlighter-rouge">bch</code>. Recall that the ML method uses the entries of the matrix D to re-estimate the mixture model while incorporating the external variable(s). Consequently, the ML approach may alter the composition of the components in this third step, potentially changing the meaning of the latent classes themselves. To monitor such changes, we can include the option <code class="language-plaintext highlighter-rouge">detail</code>, which provides statistics on the switching of observations between classes during the procedure. If more than 20% of observations switch classes, <code class="language-plaintext highlighter-rouge">step3</code> will automatically display these statistics with a warning message.</p> <pre><code class="hljs-stata-code">. step3 y, pr(cpost) lclass(W) outcome detail</code></pre> <div class="stata-log"> <figure class="highlight"><pre><code class="language-text" data-lang="text">Performing ML estimation...
+
+STEP3: Distal outcome analysis
+
+ML Mean estimation                   Number of obs =     4,071
+--------------------------------------------------------------
+             | Coefficient  Std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+y            |
+           W |
+          1  |   .4674262    .026677      .4151401    .5197122
+          2  |  -.0061706   .0293066     -.0636105    .0512693
+-------------+------------------------------------------------
+sigma2       |
+       W#c.y |
+          1  |   1.045716   .0405707      .9661987    1.125233
+          2  |   .9324711   .0414606      .8512097    1.013732
+--------------------------------------------------------------
+Note: Robust std. err.
+      Unequal variance across classes assumed.
+
+Class composition (%) before and after Step 3
+
+--------------------------------------------------
+       Class |     Step 1      Step 3 |     Change
+-------------+------------------------+-----------
+           1 |      55.35       55.35 |      -0.00
+           2 |      44.65       44.65 |       0.00
+--------------------------------------------------
+
+Observations in Step 1 class moved to a different class in Step 3
+
++------------------------+
+|          n           % |
+|------------------------|
+|          1           0 |
++------------------------+
+Note: results might be inconsistent for % &gt; 20</code></pre></figure> </div> <p>The difference between the two components on <code class="language-plaintext highlighter-rouge">y</code>, estimated using the ML method, is quite similar to that obtained with the BCH method, both being only about 5% smaller than the true difference. From the <code class="language-plaintext highlighter-rouge">detail</code> output, we also see that just 1 out of 4,071 observations switched class during the ML procedure. In addition, the ML method reports variance estimates (<code class="language-plaintext highlighter-rouge">sigma2</code>) for each distal outcome within each class, which by default are allowed to differ across classes, though this can be constrained with the <code class="language-plaintext highlighter-rouge">eqvar</code> option.</p> <hr> <h2 id="choosing-between-methods">Choosing between methods</h2> <table class="methods-table"> <thead> <tr> <th>Situation</th> <th>Method</th> </tr> </thead> <tbody> <tr> <td>Continuous distal outcome, normality uncertain</td> <td><span class="badge badge-accepted">BCH</span></td> </tr> <tr> <td>Continuous distal outcome, classes well separated</td> <td><span class="badge badge-accepted">ML</span></td> </tr> <tr> <td>Categorical outcome or covariate</td> <td><span class="badge badge-accepted">ML</span></td> </tr> <tr> <td>Low entropy, need stable class definitions</td> <td><span class="badge badge-accepted">BCH</span></td> </tr> <tr> <td>Naive modal or proportional assignment</td> <td><span class="badge badge-rejected">Avoid</span></td> </tr> </tbody> </table> <hr> <h2 id="frequently-asked-questions">Frequently asked questions</h2> <div class="faq"> <h3>What is the three-step problem in latent class analysis?</h3> <p>The three-step approach fits a latent class model, assigns each observation to a class, then relates those classes to outcomes or predictors. The problem arises between the second and third steps: the assigned class labels are treated as if they were observed without error, when they are actually estimates. Ignoring this classification error biases the Step-3 estimates toward zero, diluting real differences between classes.</p> <h3>How much bias does the naive three-step approach introduce?</h3> <p>With moderate entropy, the attenuation typically falls in the 20–45% range, meaning genuine class differences can be understated by up to nearly half. The bias shrinks as entropy (classification certainty) approaches 1 and grows as classes become harder to separate.</p> <h3>How do you correct the bias — BCH or ML?</h3> <p>Two bias-adjusted methods fix it by carrying the classification error into Step 3. Use BCH for continuous distal outcomes when normality is uncertain or when you need stable class definitions at low entropy; use the ML (maximum-likelihood) correction for categorical outcomes and covariates, or for continuous outcomes when classes are well separated. In Stata, both are available through the <code>step3</code> command.</p> </div> <hr> <hr> <p><strong>Cite as:</strong> Califano, G. &amp; Fabbricatore, R. (2026). Relating latent class membership to covariates and outcomes: Two bias-adjusted methods in Stata. <em>Stata Journal, 26</em>(2), 153–176. <a href="https://doi.org/10.1177/1536867X261449931" rel="external nofollow noopener" target="_blank">https://doi.org/10.1177/1536867X261449931</a></p> <hr> <script type="module">
+/**
+ * Load highlight.js with the Stata language and apply it to
+ * all .hljs-stata-code blocks that Rouge left unstyled.
+ */
+import hljs from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/es/highlight.min.js';
+import stata from 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/es/languages/stata.min.js';
+
+hljs.registerLanguage('stata', stata);
+
+document.querySelectorAll('code.hljs-stata-code').forEach(el => {
+  el.removeAttribute('data-highlighted');
+  hljs.highlightElement(el);
+});
+</script> <div class="footnotes" role="doc-endnotes"> <ol> <li id="fn:1"> <p>This is biased as well. See <a href="https://doi.org/10.1093/pan/mpq025" rel="external nofollow noopener" target="_blank">Vermunt (2010)</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p> </li> <li id="fn:2"> <p>Entropy is a summary of classification quality. High entropy means most posterior probabilities cluster near 0 or 1; low entropy means they spread across classes. The 20–45% bias range assumes moderate entropy. When entropy approaches 1 the bias is negligible. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p> </li> <li id="fn:3"> <p>Never leave your unlocked laptop unattended. Or do, and then write a methods paper about it. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p> </li> </ol> </div> </div> </article> </div> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Giovanbattista Califano. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Last updated: June 28, 2026. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script defer src="https://cdn.jsdelivr.net/npm/tocbot@4.36.4/dist/tocbot.min.js" integrity="sha256-lo/r+jQ81wWrxdIiiiEEd538z4+dTJTt+leOuAS7GCw=" crossorigin="anonymous"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "about",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-publications",
+          title: "publications",
+          description: "publications by categories in reversed chronological order. generated by jekyll-scholar.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "A growing collection of your cool projects.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
+        },{id: "nav-repositories",
+          title: "repositories",
+          description: "Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/repositories/";
+          },
+        },{id: "nav-cv",
+          title: "CV",
+          description: "This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "nav-teaching",
+          title: "teaching",
+          description: "Course materials, schedules, and resources for classes taught.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/teaching/";
+          },
+        },{id: "nav-people",
+          title: "people",
+          description: "members of the lab or group",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/people/";
+          },
+        },{id: "dropdown-bookshelf",
+              title: "bookshelf",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/books/";
+              },
+            },{id: "dropdown-blog",
+              title: "blog",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/blog/";
+              },
+            },{id: "post-the-latent-bias-in-latent-class-analysis",
+        
+          title: "The latent bias in latent class analysis",
+        
+        description: "After you fit a latent class model, linking the classes to outcomes is trickier than it looks. The standard approach biases your estimates toward zero.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/latent-bias-lca/";
+          
+        },
+      },{id: "post-a-post-with-plotly-js",
+        
+          title: "a post with plotly.js",
+        
+        description: "this is what included plotly.js code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/plotly/";
+          
+        },
+      },{id: "post-a-post-with-image-galleries",
+        
+          title: "a post with image galleries",
+        
+        description: "this is what included image galleries could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/photo-gallery/";
+          
+        },
+      },{id: "post-a-post-with-tabs",
+        
+          title: "a post with tabs",
+        
+        description: "this is what included tabs in a post could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/tabs/";
+          
+        },
+      },{id: "post-a-post-with-typograms",
+        
+          title: "a post with typograms",
+        
+        description: "this is what included typograms code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/typograms/";
+          
+        },
+      },{id: "post-a-post-that-can-be-cited",
+        
+          title: "a post that can be cited",
+        
+        description: "this is what a post that can be cited looks like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/post-citation/";
+          
+        },
+      },{id: "post-a-post-with-pseudo-code",
+        
+          title: "a post with pseudo code",
+        
+        description: "this is what included pseudo code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/pseudocode/";
+          
+        },
+      },{id: "post-a-post-with-code-diff",
+        
+          title: "a post with code diff",
+        
+        description: "this is how you can display code diffs",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/code-diff/";
+          
+        },
+      },{id: "post-a-post-with-advanced-image-components",
+        
+          title: "a post with advanced image components",
+        
+        description: "this is what advanced image components could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/advanced-images/";
+          
+        },
+      },{id: "post-a-post-with-vega-lite",
+        
+          title: "a post with vega lite",
+        
+        description: "this is what included vega lite code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/vega-lite/";
+          
+        },
+      },{id: "post-a-post-with-geojson",
+        
+          title: "a post with geojson",
+        
+        description: "this is what included geojson code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/geojson-map/";
+          
+        },
+      },{id: "post-a-post-with-echarts",
+        
+          title: "a post with echarts",
+        
+        description: "this is what included echarts code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/echarts/";
+          
+        },
+      },{id: "post-a-post-with-chart-js",
+        
+          title: "a post with chart.js",
+        
+        description: "this is what included chart.js code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/chartjs/";
+          
+        },
+      },{id: "post-a-post-with-tikzjax",
+        
+          title: "a post with TikZJax",
+        
+        description: "this is what included TikZ code could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/tikzjax/";
+          
+        },
+      },{id: "post-a-post-with-bibliography",
+        
+          title: "a post with bibliography",
+        
+        description: "an example of a blog post with bibliography",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/post-bibliography/";
+          
+        },
+      },{id: "post-a-post-with-jupyter-notebook",
+        
+          title: "a post with jupyter notebook",
+        
+        description: "an example of a blog post with jupyter notebook",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/jupyter-notebook/";
+          
+        },
+      },{id: "post-a-post-with-custom-blockquotes",
+        
+          title: "a post with custom blockquotes",
+        
+        description: "an example of a blog post with custom blockquotes",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/custom-blockquotes/";
+          
+        },
+      },{id: "post-a-post-with-table-of-contents-on-a-sidebar",
+        
+          title: "a post with table of contents on a sidebar",
+        
+        description: "an example of a blog post with table of contents on a sidebar",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/sidebar-table-of-contents/";
+          
+        },
+      },{id: "post-a-post-with-audios",
+        
+          title: "a post with audios",
+        
+        description: "this is what included audios could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/audios/";
+          
+        },
+      },{id: "post-a-post-with-videos",
+        
+          title: "a post with videos",
+        
+        description: "this is what included videos could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/videos/";
+          
+        },
+      },{id: "post-displaying-beautiful-interactive-tables",
+        
+          title: "displaying beautiful interactive tables",
+        
+        description: "an example of how to use interactive tables in al-folio",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/tables/";
+          
+        },
+      },{id: "post-a-post-with-table-of-contents",
+        
+          title: "a post with table of contents",
+        
+        description: "an example of a blog post with table of contents",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/table-of-contents/";
+          
+        },
+      },{id: "post-a-post-with-giscus-comments",
+        
+          title: "a post with giscus comments",
+        
+        description: "an example of a blog post with giscus comments",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2022/giscus-comments/";
+          
+        },
+      },{id: "post-a-post-with-redirect",
+        
+          title: "a post with redirect",
+        
+        description: "you can also redirect to assets like pdf",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/assets/pdf/example_pdf.pdf";
+          
+        },
+      },{id: "post-a-post-with-diagrams",
+        
+          title: "a post with diagrams",
+        
+        description: "an example of a blog post with diagrams",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2021/diagrams/";
+          
+        },
+      },{id: "post-a-distill-style-blog-post",
+        
+          title: "a distill-style blog post",
+        
+        description: "an example of a distill-style blog post and main elements",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2021/distill/";
+          
+        },
+      },{id: "post-a-post-with-twitter",
+        
+          title: "a post with twitter",
+        
+        description: "an example of a blog post with twitter",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2020/twitter/";
+          
+        },
+      },{id: "post-a-post-with-disqus-comments",
+        
+          title: "a post with disqus comments",
+        
+        description: "an example of a blog post with disqus comments",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/disqus-comments/";
+          
+        },
+      },{id: "post-a-post-with-math",
+        
+          title: "a post with math",
+        
+        description: "an example of a blog post with some math",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/math/";
+          
+        },
+      },{id: "post-a-post-with-code",
+        
+          title: "a post with code",
+        
+        description: "an example of a blog post with some code",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/code/";
+          
+        },
+      },{id: "post-a-post-with-images",
+        
+          title: "a post with images",
+        
+        description: "this is what included images could look like",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/images/";
+          
+        },
+      },{id: "post-a-post-with-formatting-and-links",
+        
+          title: "a post with formatting and links",
+        
+        description: "march & april, looking forward to summer",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2015/formatting-and-links/";
+          
+        },
+      },{id: "books-the-godfather",
+          title: 'The Godfather',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the_godfather/";
+            },},{id: "news-bbc-rolling-stone-and-daily-mail-cover-our-ai-food-imagery-research",
+          title: 'BBC, Rolling Stone, and Daily Mail cover our AI food imagery research',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/announcement_4/";
+            },},{id: "news-msca-postdoctoral-fellowship-awarded-at-the-university-of-oxford",
+          title: 'MSCA Postdoctoral Fellowship awarded at the University of Oxford',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/announcement_1/";
+            },},{id: "news-new-paper-in-the-stata-journal-step3-bias-adjusted-methods-for-lca",
+          title: 'New paper in the Stata Journal — STEP3 bias-adjusted methods for LCA',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/announcement_2/";
+            },},{id: "news-new-note-published-the-latent-bias-in-latent-class-analysis-blog-2026-latent-bias-lca",
+          title: 'New note published: [The latent bias in latent class analysis](/blog/2026/latent-bias-lca/).',
+          description: "",
+          section: "News",},{id: "news-global-talent-endorsement-stage-1-approved-by-the-british-academy-gb",
+          title: 'Global Talent Endorsement (Stage 1) approved by The British Academy. <img class="emoji" title=":gb:" alt=":gb:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f1ec-1f1e7.png" height="20" width="20">',
+          description: "",
+          section: "News",},{id: "projects-project-1",
+          title: 'project 1',
+          description: "with background image",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/1_project/";
+            },},{id: "projects-project-2",
+          title: 'project 2',
+          description: "a project with a background image and giscus comments",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2_project/";
+            },},{id: "projects-project-3-with-very-long-name",
+          title: 'project 3 with very long name',
+          description: "a project that redirects to another website",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/3_project/";
+            },},{id: "projects-project-4",
+          title: 'project 4',
+          description: "another without an image",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_project/";
+            },},{id: "projects-project-5",
+          title: 'project 5',
+          description: "a project with a background image",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_project/";
+            },},{id: "projects-project-6",
+          title: 'project 6',
+          description: "a project with no image",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_project/";
+            },},{id: "projects-project-7",
+          title: 'project 7',
+          description: "with background image",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_project/";
+            },},{id: "projects-project-8",
+          title: 'project 8',
+          description: "an other project with a background image and giscus comments",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/8_project/";
+            },},{id: "projects-project-9",
+          title: 'project 9',
+          description: "another project with an image 🎉",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/9_project/";
+            },},{id: "teachings-data-science-fundamentals",
+          title: 'Data Science Fundamentals',
+          description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/data-science-fundamentals/";
+            },},{id: "teachings-introduction-to-machine-learning",
+          title: 'Introduction to Machine Learning',
+          description: "This course provides an introduction to machine learning concepts, algorithms, and applications. Students will learn about supervised and unsupervised learning, model evaluation, and practical implementations.",
+          section: "Teachings",handler: () => {
+              window.location.href = "/teachings/introduction-to-machine-learning/";
+            },},{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'Socials',
+        handler: () => {
+          window.open("/assets/pdf/Califano_CV.pdf", "_blank");
+        },
+      },{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%69%6E%66%6F@%63%61%6C%69%66%61%6E%6F.%78%79%7A", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'ORCID',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0003-2088-2023", "_blank");
+        },
+      },{
+        id: 'social-scholar',
+        title: 'Google Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://scholar.google.com/citations?user=9_K3YpQAAAAJ", "_blank");
+        },
+      },{
+        id: 'social-scopus',
+        title: 'Scopus',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.scopus.com/authid/detail.uri?authorId=57358445100", "_blank");
+        },
+      },{
+        id: 'social-researchgate',
+        title: 'ResearchGate',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.researchgate.net/profile/Giovanbattista-Califano/", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
