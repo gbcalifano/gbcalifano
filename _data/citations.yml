@@ -1,12 +1,12 @@
 metadata:
-  last_updated: '2026-07-03'
+  last_updated: '2026-07-15'
 papers:
   9_K3YpQAAAAJ:-f6ydRqryjwC:
     citations: 6
     title: When and why do users trust AI in the kitchen? A hybrid modelling approach to the adoption of AI-assisted cooking
     year: '2026'
   9_K3YpQAAAAJ:2osOgNQ5qMEC:
-    citations: 45
+    citations: 46
     title: 'Variety seeking behavior in the wine domain: A consumers segmentation using big data'
     year: '2022'
   9_K3YpQAAAAJ:4DMP91E08xMC:
@@ -14,7 +14,7 @@ papers:
     title: 'Puppy power: How neophobia, attitude towards sustainability, and animal empathy affect the demand for insect-based pet food'
     year: '2024'
   9_K3YpQAAAAJ:9ZlFYXVOiuMC:
-    citations: 74
+    citations: 76
     title: Assessing the visual appeal of real/AI-generated food images
     year: '2024'
   9_K3YpQAAAAJ:BqipwSGYUEgC:
@@ -29,8 +29,12 @@ papers:
     citations: 0
     title: 'Bridging the Gap: The Impact of Compensatory Measures on Mountain Farming in Piedmont'
     year: '2025'
+  9_K3YpQAAAAJ:J_g5lzvAfSwC:
+    citations: 0
+    title: 'Valuing farmer-centred DSS for uptake: Evidence from Italian wheat producers using a hybrid choice model'
+    year: '2026'
   9_K3YpQAAAAJ:L8Ckcad2t8MC:
-    citations: 25
+    citations: 24
     title: Would you trust an AI chef? Examining what people think when AI becomes creative with food
     year: '2024'
   9_K3YpQAAAAJ:M3NEmzRMIkIC:
@@ -54,7 +58,7 @@ papers:
     title: 'From creepy to crispy: species-specific acceptance of insect flours in crackers through a discrete choice experiment on young consumer preferences'
     year: '2026'
   9_K3YpQAAAAJ:QIV2ME_5wuYC:
-    citations: 20
+    citations: 21
     title: 'Consumer perceptions and preferences for urban farming, hydroponics, and robotic cultivation: A case study on parsley'
     year: '2024'
   9_K3YpQAAAAJ:RGFaLdJalmkC:
@@ -70,7 +74,7 @@ papers:
     title: 'Beyond one-size-fits-all: Consumers react differently to packaging colors and names of cultured meat in Italy'
     year: '2023'
   9_K3YpQAAAAJ:Wp0gIr-vW9MC:
-    citations: 23
+    citations: 24
     title: "From Roots to Leaves: Understanding Consumer Acceptance in Implementing Climate\u2010Resilient Strategies in Viticulture"
     year: '2024'
   9_K3YpQAAAAJ:YOwf2qJgpHMC:
@@ -82,7 +86,7 @@ papers:
     title: 'Consumer preference and willingness to pay for 3D-printed chocolates: A discrete choice experiment'
     year: '2024'
   9_K3YpQAAAAJ:hC7cP41nSMkC:
-    citations: 14
+    citations: 16
     title: 'Bioplastics in the basket of Italians: A hybrid framework for understanding the adoption of bioplastic food packaging'
     year: '2024'
   9_K3YpQAAAAJ:mVmsd5A6BfQC:
@@ -94,7 +98,7 @@ papers:
     title: 'Premium pricing for zero residue certification: The role of environmental concern and health consciousness in consumer preferences for eco-labels on fresh tomatoes'
     year: '2025'
   9_K3YpQAAAAJ:ns9cj8rnVeAC:
-    citations: 0
+    citations: 2
     title: 'Relating latent class membership to covariates and outcomes: Two bias-adjusted methods in Stata'
     year: '2026'
   9_K3YpQAAAAJ:qUcmZB5y_30C:
@@ -102,10 +106,10 @@ papers:
     title: Alternative protein source for a sustainable and healthy nutrition
     year: '2024'
   9_K3YpQAAAAJ:qjMakFHDy7sC:
-    citations: 35
+    citations: 36
     title: Exploring the roles of online moral disengagement, body esteem, and psychosexual variables in predicting sexting motivations and behaviours
     year: '2022'
   9_K3YpQAAAAJ:qxL8FJ1GzNcC:
-    citations: 34
+    citations: 35
     title: 'Eco-packaging in organic foods: rational decisions or emotional influences?'
     year: '2024'
